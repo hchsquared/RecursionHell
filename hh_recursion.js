@@ -26,14 +26,9 @@ var factorial = function (n) {
 // (a word that is identical in the reverse order.) Assume single letters 
 // are considered palindromes. The output should be either true or false.
 
-var test1 = "hannah";
-var test2 = "a man a plan a canal panama";
-var test3 = "a man";
-var test4 = "negative";
-
 var palindrome = function(str) {
   
-  str = str.replace(/\s/g, '');
+  str = str.replace(/\s/g, '').toLowerCase();
 
   str1 = arguments[1] || str.slice(0, Math.floor(str.length / 2));
   str2 = arguments[2] || str.slice(Math.ceil(str.length / 2), str.length);
@@ -53,24 +48,37 @@ var palindrome = function(str) {
 
 }
 
-console.log(palindrome(test1));
-console.log(palindrome(test2));
-console.log(palindrome(test3));
-console.log(palindrome(test4));
+// console.log(palindrome("hannah"));
+// console.log(palindrome("a Man a plan a canal panama"));
+// console.log(palindrome("negative"));
+// console.log(palindrome("stiLL no good"));
 
-/*
-	/// STRING REVERSE
+
+/// STRING REVERSE
 
 // Write a function that recursively reverses a string, i.e.:
 
 // 'testing' => 'gnitset'
 
 function stringReverse(str) {
-// Your code here
+  newStr = arguments[1] || "";
+
+  // Termination Case
+  if (newStr.length === str.length) {
+    return newStr;
+  }
+  // Base Case
+  else {
+    newStr += str[str.length - newStr.length - 1];
+    return stringReverse(str, newStr);
+  }
+
 }
 
+//console.log(stringReverse("testing"));
 
-	/// RECURSIVE MAP
+
+/// RECURSIVE MAP
 
 // Recursively implement a map function. For example:
 
@@ -83,7 +91,7 @@ function map(arr) {
 // Your code here
 }
 
-
+/*
 	/// GREATEST COMMON DIVISOR
 
 // Write an algorithm to find the greatest common divisor (gcd) 
