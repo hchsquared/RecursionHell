@@ -101,7 +101,7 @@ function map(arr) {
 }
 
 
-	/// GREATEST COMMON DIVISOR
+/// GREATEST COMMON DIVISOR
 
 // Write an algorithm to find the greatest common divisor (gcd) 
 // of two positive numbers.
@@ -122,12 +122,12 @@ function gcd(x, y) {
   }
 }
 
-console.log(gcd(5, 20));
-console.log(gcd(11, 33));
-console.log(gcd(12, 18));
+// console.log(gcd(5, 20));
+// console.log(gcd(11, 33));
+// console.log(gcd(12, 18));
 
-/*
-	/// NUMBERS BETWEEN
+
+/// NUMBERS BETWEEN
 
 // Recursively implement a function that returns an array of the 
 // numbers in between x and y.
@@ -136,10 +136,22 @@ console.log(gcd(12, 18));
 // => [5,6,7]
 
 function inBetween(x, y) {
-// Your code here
+  var newArr = arguments[2] || [];
+  
+  // termination case
+  if (x + 1 === y) {
+    return newArr;
+  } else {
+    newArr.push(x + 1);
+    return inBetween(x + 1, y, newArr);
+  }
+
 }
 
+console.log(inBetween(4, 8));
+console.log(inBetween(-5, 10));
 
+/*
 	/// ARRAY SUM
 
 // Compute the sum of all of the numbers in an array. Assume there is
