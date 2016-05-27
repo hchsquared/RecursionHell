@@ -61,7 +61,7 @@ var palindrome = function(str) {
 // 'testing' => 'gnitset'
 
 function stringReverse(str) {
-  newStr = arguments[1] || "";
+  var newStr = arguments[1] || "";
 
   // Termination Case
   if (newStr.length === str.length) {
@@ -82,26 +82,51 @@ function stringReverse(str) {
 
 // Recursively implement a map function. For example:
 
-// map(['a','b','c'],function(value) {
+// console.log(map(['a','b','c'],function(value) {
 //   return value.toUpperCase();
-// }); 
+// })); 
 // => [ 'A', 'B', 'C' ]
 
 function map(arr) {
-// Your code here
+  var newArr = arguments[2] || [];
+  var iterator = arguments[1] || function(value) {return value;}
+
+  if (newArr.length === arr.length) {
+    return newArr;
+  } else {
+    newArr.push(iterator(arr[newArr.length]));
+    return map(arr, iterator, newArr);
+  }
+
 }
 
-/*
+
 	/// GREATEST COMMON DIVISOR
 
 // Write an algorithm to find the greatest common divisor (gcd) 
 // of two positive numbers.
 
 function gcd(x, y) {
-// Your code here
+  // stop when you reach the lesser of the two numbers
+  var max = arguments[2] || 1;
+  var n = arguments[3] || 1;
+
+  // Termination case
+  if (n > Math.min(x,y)) {
+    return max;
+  }
+  // Base case 
+  else {
+    if (x % n === 0 && y % n === 0) { max = n; }
+    return gcd(x, y, max, n + 1);
+  }
 }
 
+console.log(gcd(5, 20));
+console.log(gcd(11, 33));
+console.log(gcd(12, 18));
 
+/*
 	/// NUMBERS BETWEEN
 
 // Recursively implement a function that returns an array of the 
